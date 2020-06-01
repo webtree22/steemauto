@@ -3,18 +3,10 @@
 				<div class="container-fluid">
 					<center>
 					<p class="copyright">
-						<a href="https://github.com/myary/steemauto">Steemauto</a>, Made by Steem Witness <a target="_blank" href="https://steemit.com/@mahdiyari">@mahdiyari</a> with Love <i style="color:red;"class="pe-7s-like"></i> for Steem Users. |<a href="https://discord.gg/qhKDfEp"> Discord Channel</a>
-						<br>
+						<!-- <a href="https://github.com/myary/steemauto"> auto</a>, Made by Steem Witness <a target="_blank" href="https://steemit.com/@mahdiyari">@mahdiyari</a> with Love <i style="color:red;"class="pe-7s-like"></i> for Steem Users. |<a href="https://discord.gg/qhKDfEp"> Discord Channel</a> -->
+						<!-- <br> -->
 						<a href="/privacy-policy.php">Privacy Policy</a> | <a href="/about-us.php">About us</a>
 					</p>
-					<!-- Histats.com  (div with counter) -->
-					<div id="histats_counter"></div>
-					<noscript>
-						<a href="/" target="_blank">
-							<img  src="//sstatic1.histats.com/0.gif?4198152&101" alt="free site statistics" border="0">
-						</a>
-					</noscript>
-					<!-- Histats.com  END  -->
 					</center>
 				</div>
 			</footer>
@@ -100,15 +92,6 @@
 		$('#modaldonations').modal('hide');
 	}
 
-	var _Hasync= _Hasync|| [];
-	_Hasync.push(['Histats.start', '1,4198152,4,1035,150,25,00000001']);
-	_Hasync.push(['Histats.fasi', '1']);
-	_Hasync.push(['Histats.track_hits', '']);
-	(function() {
-	var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-	hs.src = ('//s10.histats.com/js15_as.js');
-	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-	})();
 	</script>
 	<?
 	}

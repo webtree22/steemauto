@@ -1,6 +1,7 @@
 <?php
 $active =0;
-define('__ROOT__', dirname(dirname(__FILE__)));
+$ROOT  = dirname(__FILE__);
+$BACKENDSERVER  = 'http://127.0.0.1/';
 
 require_once('inc/conf/db.php');
 require_once('inc/dep/login_register.php');

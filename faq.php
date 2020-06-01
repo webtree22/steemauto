@@ -1,4 +1,6 @@
 <?php
+require_once('inc/conf/db.php');
+require_once('inc/dep/login_register.php');
 $active =0;
 require_once('inc/temp/head.php');
 ?>

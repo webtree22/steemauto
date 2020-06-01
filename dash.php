@@ -1,6 +1,5 @@
 <?php
-define('__ROOT__', dirname(__FILE__));
-define('BACKENDSERVER', 'http://localhost/');
+
 require_once('inc/dep/func.php');
 require_once('inc/conf/db.php');
 require_once('inc/dep/login_register.php');
@@ -54,14 +53,14 @@ if(isset($_GET['i'])){
 	}
 }
 
-require_once(__ROOT__.'/inc/temp/head.php');
-require_once(__ROOT__.'/inc/dep/func.php');
+require_once('inc/temp/head.php');
+require_once('inc/dep/func.php');
 if($log == 0){
 	echo 'You should login.<script type="text/javascript">window.location.href = "/";</script>';
 	header("Location: /");
 	exit();
 }
-echo $name;
+// echo $name;
 $x = json_decode(call('get_accounts','["'.$name.'"]'));
 $y = $x->result[0]->posting->account_auths;
 $auth = 0;
@@ -248,5 +247,5 @@ foreach($result as $x){
 
 }
 
-require(__ROOT__.'/inc/temp/footer.php');
+require('inc/temp/footer.php');
 ?>

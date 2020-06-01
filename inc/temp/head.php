@@ -1,14 +1,15 @@
 
 <?php
-// define('__ROOT__', dirname(dirname(__FILE__)));
-//die('Adding some options... try 5 minutes later. ');
 
 
-// require_once('inc/conf/db.php');
-// require_once('inc/dep/login_register.php');
+// // require_once('inc/conf/db.php');
+// // require_once('inc/dep/login_register.php');
 
-require_once(__ROOT__.'/inc/conf/db.php');
-require_once(__ROOT__.'/inc/dep/login_register.php');
+// if(!isset($ROOT)) {
+// 	$ROOT = "";
+// }
+// require_once($ROOT.'/inc/conf/db.php');
+// require_once($ROOT.'/inc/dep/login_register.php');
 
 ?>
 <!doctype html>
@@ -40,13 +41,13 @@ require_once(__ROOT__.'/inc/dep/login_register.php');
 </head>
 <body>
 	<div class="wrapper" >
-		<div class="sidebar" data-color="light-green" data-image="/img/logo.png">
+		<div class="sidebar" data-color="light-green">
 			<!-- Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" Tip 2: you can also add an image using data-image tag -->
 
 			<div class="sidebar-wrapper">
 				<div class="logo">
 					<a href="/" class="simple-text">
-						SteemAuto
+						Auto.Steemdb.Online
 					</a>
 				</div>
 
@@ -69,7 +70,7 @@ require_once(__ROOT__.'/inc/dep/login_register.php');
 							<p>Curation Trail</p>
 						</a>
 					</li>
-					<li <? if($active ==3){echo 'class="active"';} ?>>
+					<!-- <li <? if($active ==3){echo 'class="active"';} ?>>
 						<a href="/dash.php?i=2">
 							<i class="pe-7s-like"></i>
 							<p>Fanbase</p>
@@ -92,7 +93,7 @@ require_once(__ROOT__.'/inc/dep/login_register.php');
 							<i class="pe-7s-wallet"></i>
 							<p>Claim Rewards</p>
 						</a>
-					</li>
+					</li> -->
 					<li>
 						<a onclick="logout();">
 							<i class="pe-7s-back-2"></i>
@@ -101,7 +102,7 @@ require_once(__ROOT__.'/inc/dep/login_register.php');
 					</li>
 				   <? }else{ ?>
 				   <li>
-						<a href="https://steemlogin.com/oauth2/authorize?client_id=steem.app&redirect_uri=https://steemauto.com/callback.php&scope=login">
+						<a href="https://steemlogin.com/oauth2/authorize?client_id=steem.app&redirect_uri=<?php echo $FRONTEND; ?>callback.php&scope=login">
 							<i class="pe-7s-door-lock"></i>
 							<p>Login / Register</p>
 						</a>
@@ -123,7 +124,7 @@ require_once(__ROOT__.'/inc/dep/login_register.php');
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="/">SteemAuto</a>
+						<a class="navbar-brand" href="/">Steem Automation</a>
 					</div>
 					<div class="collapse navbar-collapse">
 
@@ -199,8 +200,9 @@ require_once(__ROOT__.'/inc/dep/login_register.php');
 					const xmlhttp = new XMLHttpRequest()
 					xmlhttp.onreadystatechange = function() {
 						if (this.readyState == 4 && this.status == 200) {
+							console.log(this.responseText);
 							if (JSON.parse(this.responseText).id == 1) {
-								window.location="/";
+								// window.location="/";
 							} else {
 								$.notify({
 									icon: 'pe-7s-attention',
@@ -213,7 +215,7 @@ require_once(__ROOT__.'/inc/dep/login_register.php');
 							}
 						}
 					}
-					xmlhttp.open('POST', '<?php echo BACKENDSERVER; ?>api/v1/logout', true)
+					xmlhttp.open('POST', '<?php echo $BACKENDSERVER; ?>api/v1/logout', true)
 					xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
 					xmlhttp.send('')
 					return 1

@@ -4,11 +4,12 @@
 </style>
 <script>
 function callApi(url, body){
+	console.log(url)
+	console.log(body)
 	$('.btn').attr('disabled','true')
 	const xmlhttp = new XMLHttpRequest()
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			console.log(this.responseText);
 			if (JSON.parse(this.responseText).id == 1) {
 				$.notify({
 					icon: 'pe-7s-check',
@@ -39,11 +40,11 @@ function callApi(url, body){
 }
 
 function follow(user){ //follow a trail
-	callApi('api/v1/dashboard/curation_trail/follow', 'trail=' + encodeURIComponent(user))
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/curation_trail/follow', 'trail=' + encodeURIComponent(user))
 	return 1
 }
 function unfollow(user){ //unfollow a trail
-	callApi('api/v1/dashboard/curation_trail/unfollow', 'trail=' + encodeURIComponent(user))
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/curation_trail/unfollow', 'trail=' + encodeURIComponent(user))
 	return 1
 }
 let recent = null
@@ -92,7 +93,7 @@ function settings(user){ //settings for trail
 		'&votingway=' + encodeURIComponent(votingway) +
 		'&enable=' + encodeURIComponent(enable)
 	
-	callApi('api/v1/dashboard/curation_trail/settings', body)
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/curation_trail/settings', body)
 	return 1
 }
 
@@ -105,22 +106,22 @@ function become(){ //becoming/editing trail
 		desc = 'none.'
 	}
 
-	callApi('<?php echo BACKENDSERVER; ?>api/v1/dashboard/curation-trail/become', 'desc=' + encodeURIComponent(desc))
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/curation-trail/become', 'desc=' + encodeURIComponent(desc))
 	return 1
 }
 
 
 function follow1(user){ //follow a fan
-	callApi('api/v1/dashboard/fanbase/follow', 'fan=' + encodeURIComponent(user))
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/fanbase/follow', 'fan=' + encodeURIComponent(user))
 	return 1
 }
 function unfollow1(user){ //unfollow a fan
-	callApi('api/v1/dashboard/fanbase/unfollow', 'fan=' + encodeURIComponent(user))	
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/fanbase/unfollow', 'fan=' + encodeURIComponent(user))	
 	return 1;
 }
 function follow2(){ //follow a fan by form
 	const user = document.getElementById('userx').value
-	callApi('api/v1/dashboard/fanbase/follow', 'fan=' + encodeURIComponent(user))
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/fanbase/follow', 'fan=' + encodeURIComponent(user))
 	return 1
 }
 function settings1(user){ //settings for a fan
@@ -145,7 +146,7 @@ function settings1(user){ //settings for a fan
 		'&enable=' + encodeURIComponent(enable) +
 		'&dailylimit=' + encodeURIComponent(dailylimit)
 
-	callApi('api/v1/dashboard/fanbase/settings', body)
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/fanbase/settings', body)
 	return 1
 }
 function post(){
@@ -182,12 +183,12 @@ function post(){
 			'&tags=' + JSON.stringify(arrtags) +
 			'&beneficiarytype=' + beneficiarytype
 
-		callApi('api/v1/dashboard/schedule_post/submit', body)
+		callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/schedule_post/submit', body)
 	}
 	return 1
 }
 function deletepost(id){
-	callApi('api/v1/dashboard/schedule_post/delete', 'id=' + encodeURIComponent(id))
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/schedule_post/delete', 'id=' + encodeURIComponent(id))
 	return 1
 }
 function addusertolist(){
@@ -203,11 +204,11 @@ function addusertolist(){
 	const body = 'user=' + encodeURIComponent(user) +
 		'&weight=' + encodeURIComponent(weight) +
 		'&minute=' + encodeURIComponent(minute)
-	callApi('api/v1/dashboard/comment_upvote/add', body)
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/comment_upvote/add', body)
 	return 1
 }
 function removeuserfromlist(user){
-	callApi('api/v1/dashboard/comment_upvote/delete', 'user=' + encodeURIComponent(user))
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/comment_upvote/delete', 'user=' + encodeURIComponent(user))
 	return 1
 }
 
@@ -230,21 +231,21 @@ function commentupvotesettings(user){
 		'&weight=' + encodeURIComponent(weight) +
 		'&minute=' + encodeURIComponent(minute) +
 		'&enable=' + encodeURIComponent(enable)
-	callApi('api/v1/dashboard/comment_upvote/settings', body)
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/comment_upvote/settings', body)
 	return 1
 }
 
 function enableclaimreward(){
-	callApi('api/v1/dashboard/claim_reward/toggle')
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/claim_reward/toggle')
 	return 1
 }
 function disableclaimreward(){
-	callApi('api/v1/dashboard/claim_reward/toggle')
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/claim_reward/toggle')
 	return 1
 }
 
 function updateTrail(){
-	callApi('api/v1/dashboard/curation_trail/update')
+	callApi('<?php echo $BACKENDSERVER; ?>api/v1/dashboard/curation_trail/update')
 	return 1
 }
 
